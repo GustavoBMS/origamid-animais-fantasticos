@@ -48,3 +48,31 @@ function initAccordion(){
   }
 }
 initAccordion();
+
+//Scroll Suave link interno
+function initScrollSuave(){
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]');
+
+  function scrollToSection(event){
+    event.preventDefault();
+    const href = event.currentTarget.getAttribute('href');
+    const section = document.querySelector(href);
+
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+    /* Forma alternativa que utiliza funcao nativa do js mas ainda nao e 100% em outros browsers assim como o scrollIntoView*/
+    /*
+    const topo = section.offsetTop;
+    window.scrollTo({
+      top: topo,
+      behavior: "smooth",
+    });
+    */
+  }
+  linksInternos.forEach((link) => {
+    link.addEventListener('click', scrollToSection);
+  });
+}
+initScrollSuave();

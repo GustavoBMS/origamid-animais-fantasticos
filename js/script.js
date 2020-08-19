@@ -76,3 +76,23 @@ function initScrollSuave(){
   });
 }
 initScrollSuave();
+
+//Animação do scroll
+function initAnimacaoScroll(){
+  const sections = document.querySelectorAll('.js-scroll');
+  const windowMetade = window.innerHeight * 0.7;
+  
+  function animaScroll(){
+    sections.forEach((section) => {
+      const sectionTop = section.getBoundingClientRect().top - windowMetade;
+      if(sectionTop < 0){
+        section.classList.add('ativo');
+      };
+    });
+  }
+  //Ativar a funcao faz com que o site nao fique com nada na tela ate a animacao ser feita
+  animaScroll();
+  
+  window.addEventListener('scroll', animaScroll);
+}
+initAnimacaoScroll();
